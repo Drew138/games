@@ -28,9 +28,9 @@ func CreateUser(c *fiber.Ctx) {
 		return
 	}
 	user.Password = authentication.HashGenerator([]byte(user.Password))
-	dbError := database.DBConn.Create(&user)
-	if dbError != nil {
-
+	entry := database.DBConn.Create(&user)
+	if entry.Error != nil {
+		c.Status(500).Send(entry.Error)
 	}
 	userMap := map[string]string{
 		"email":   user.Email,

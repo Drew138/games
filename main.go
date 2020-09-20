@@ -24,3 +24,5 @@ func main() {
 	app.Listen(3000)
 
 }
+
+// https://docs.gofiber.io/ctx#format

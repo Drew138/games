@@ -5,9 +5,6 @@ import (
 
 	"github.com/drew138/games/database/models"
 	"gorm.io/driver/postgres"
-
-	// requirement for DBConn
-	_ "gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
