@@ -28,12 +28,13 @@ func CreateUser(c *fiber.Ctx) {
 		c.Status(500).Send(dbError)
 		return
 	}
-	userMap := map[string]string{
+	userMap := map[string]interface{}{
 		"email":   user.Email,
 		"name":    user.Name,
 		"surname": user.Surname,
+		"isAdmin": user.IsAdmin,
 	}
 
 	c.Status(200)
-	c.JSONP(userMap)
+	c.JSONP(userMap) // convert to json and send response
 }

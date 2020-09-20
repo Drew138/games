@@ -15,8 +15,10 @@ func GenerateJWT(user *models.User) (string, error) {
 
 	claims := token.Claims.(jwt.MapClaims)
 
-	claims["authorized"] = true
 	claims["email"] = user.Email
+	claims["name"] = user.Name
+	claims["surname"] = user.Surname
+	claims["isAdmin"] = user.IsAdmin
 	claims["exp"] = time.Now().Add(time.Hour * 720).Unix() // 30 days
 
 	tokenString, err := token.SignedString(secretKey)
