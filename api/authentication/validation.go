@@ -5,9 +5,8 @@ import (
 	"unicode"
 )
 
-// ValidatePassword
+// ValidatePassword - check if entered password is secure
 func ValidatePassword(password string) error {
-
 	var (
 		hasUpper     = false
 		hasLower     = false
