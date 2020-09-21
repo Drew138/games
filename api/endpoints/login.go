@@ -24,5 +24,5 @@ func LogIn(c *fiber.Ctx) {
 		c.Status(400).Send(err)
 		return
 	}
-	authorization.GenerateJWT(user.Email)
+	authorization.GenerateJWT(user)
 }

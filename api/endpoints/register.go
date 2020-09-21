@@ -36,5 +36,5 @@ func CreateUser(c *fiber.Ctx) {
 	}
 
 	c.Status(200)
-	c.JSONP(userMap) // convert to json and send response
+	c.JSON(userMap) // convert to json and send response
 }

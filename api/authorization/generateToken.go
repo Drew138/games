@@ -19,9 +19,9 @@ func GenerateJWT(user *models.User) (string, error) {
 	claims["name"] = user.Name
 	claims["surname"] = user.Surname
 	claims["isAdmin"] = user.IsAdmin
-	claims["exp"] = time.Now().Add(time.Hour * 720).Unix() // 30 days
+	claims["exp"] = time.Now().Add(time.Minute * 15).Unix()
 
-	tokenString, err := token.SignedString(secretKey)
+	tokenString, err := token.SignedString([]byte(secretKey))
 
 	if err != nil {
 		// fmt.Errorf("Error: %s", err.Error())
