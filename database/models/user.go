@@ -6,8 +6,8 @@ import "gorm.io/gorm"
 type User struct {
 	gorm.Model
 	Email    string `json:"email" gorm:"unique"`
-	Name     string `json:"name"`
-	Surname  string `json:"surname"`
-	Password string `json:"password"`
+	Name     string `json:"name" gorm:"not null"`
+	Surname  string `json:"surname" gorm:"not null"`
+	Password string `json:"password" gorm:"not null"`
 	IsAdmin  bool   `json:"isAdmin" gorm:"default:false"`
 }

@@ -2,7 +2,7 @@ package api
 
 import (
 	"github.com/drew138/games/api/endpoints"
-	"github.com/gofiber/fiber"
+	"github.com/gofiber/fiber/v2"
 )
 
 // ResgisterEndPoints applies specified routes to fiber app
@@ -13,6 +13,7 @@ func ResgisterEndPoints(app *fiber.App) {
 	app.Post("/api/v1/register", endpoints.CreateUser)
 	app.Post("/api/v1/login", endpoints.LogIn)
 	app.Post("/api/v1/logout", endpoints.Logout)
+	app.Post("/api/v1/refresh", endpoints.RefreshJWT)
 	//PUT Endpoints
 
 	//PATCH Endpoints

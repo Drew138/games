@@ -5,7 +5,7 @@ import (
 	"github.com/drew138/games/api/authorization"
 	"github.com/drew138/games/database"
 	"github.com/drew138/games/database/models"
-	"github.com/gofiber/fiber"
+	"github.com/gofiber/fiber/v2"
 )
 
 // LogIn - Grant access and permissions by providing jwt
@@ -21,8 +21,14 @@ func LogIn(c *fiber.Ctx) {
 	database.DBConn.Where("email = ?", user.Email).First(&User)
 	err := authentication.AssertPassword(User.Password, []byte(user.Password))
 	if err != nil {
-		c.Status(400).Send(err)
+		c.Status(401).Send(err)
 		return
 	}
-	authorization.GenerateJWT(user)
+	tokenPair, err := authorization.GenerateJWT(user)
+	if err != nil {
+		c.Status(401).Send(err)
+		return
+	}
+	c.Status(201)
+	c.JSON(tokenPair)
 }

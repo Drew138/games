@@ -4,7 +4,7 @@ import (
 	"log"
 
 	"github.com/drew138/games/api"
-	"github.com/gofiber/fiber"
+	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
 )
 
