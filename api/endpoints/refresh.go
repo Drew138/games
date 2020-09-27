@@ -8,16 +8,18 @@ import (
 )
 
 // RefreshJWT - function handle to refresh jwts
-func RefreshJWT(c *fiber.Ctx) {
+func RefreshJWT(c *fiber.Ctx) error {
 	rToken := strings.Split(c.Get("Authorization"), " ")[1]
 	parsedRToken, err := authorization.ParseJWT(rToken)
 	if err != nil {
 		c.Status(401).Send([]byte(err.Error()))
-		return
+		return err
 	}
 	tokenPair, err := authorization.RefreshToken(parsedRToken)
 	if err != nil {
 		c.Status(401).Send([]byte("Error: Invalid token"))
+		return err
 	}
 	c.Status(201).JSON(tokenPair)
+	return nil
 }

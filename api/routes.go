@@ -11,8 +11,7 @@ func ResgisterEndPoints(app *fiber.App) {
 	// app.Get("/")
 	// POST Endpoints
 	app.Post("/api/v1/register", endpoints.CreateUser)
-	app.Post("/api/v1/login", endpoints.LogIn)
-	app.Post("/api/v1/logout", endpoints.Logout)
+	app.Post("/api/v1/login", endpoints.Login)
 	app.Post("/api/v1/refresh", endpoints.RefreshJWT)
 	//PUT Endpoints
 

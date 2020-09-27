@@ -19,10 +19,8 @@ func loadEnv() {
 func main() {
 	loadEnv()
 	app := fiber.New()
-
 	api.ResgisterEndPoints(app)
-	app.Listen(3000)
-
+	app.Listen(":3000")
 }
 
 // https://docs.gofiber.io/ctx#format
