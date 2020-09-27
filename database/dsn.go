@@ -20,5 +20,5 @@ func GetDSN() string {
 	host := os.Getenv("DB_HOST")
 	DSN := fmt.Sprintf("host=%s user=%s dbname=%s sslmode=disable password=%s",
 		host, username, name, password)
-	return DSN
+	return DSN // return data source name
 }

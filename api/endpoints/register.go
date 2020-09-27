@@ -32,7 +32,7 @@ func CreateUser(c *fiber.Ctx) {
 		"email":   user.Email,
 		"name":    user.Name,
 		"surname": user.Surname,
-		"isAdmin": user.IsAdmin,
+		"isAdmin": user.IsAdmin, //TODO remove this field
 	}
 
 	c.Status(200)
