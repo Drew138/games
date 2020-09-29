@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 pytesseract = "*"
 image = "*"
+pillow = "*"
 
 [dev-packages]
 
