@@ -5,6 +5,10 @@ import (
 	"os"
 	"os/exec"
 
+	"github.com/drew138/games/database"
+
+	"github.com/drew138/games/database/models"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/proxy"
 )
@@ -17,7 +21,8 @@ func SolveEquation(c *fiber.Ctx) error {
 	console := exec.Command("pipenv run ./imageRecognition/recognition.py " + hex.EncodeToString(image))
 	console.Stdout = os.Stdout
 	console.Stderr = os.Stderr
-
+	database.DBConn
+	models.Queries
 	url := "http://api.wolframalpha.com/v2/query?appid=" + apiKey // TODO verify endpoint
 	// https://products.wolframalpha.com/show-steps-api/documentation/
 	err := proxy.Do(c, url)
@@ -25,6 +30,6 @@ func SolveEquation(c *fiber.Ctx) error {
 		return err
 	}
 	// Remove Server header from response
-	c.Response().Header.Del(fiber.HeaderServer)
+	c.Response().Header.Del(fiber.HeaderServer)k
 	return nil
 }

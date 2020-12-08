@@ -16,7 +16,7 @@ func AutoMigrateDB() {
 		panic("Failed to establish connection to database")
 	}
 	fmt.Println("Established connection succesfully to database")
-	DBConn.AutoMigrate(&models.User{}) // TODO add remaining models
+	DBConn.AutoMigrate(&models.User{}, &models.Queries{}) // TODO add remaining models
 	fmt.Println("Database Migrated Succesfully")
 	// DBConn
 }
